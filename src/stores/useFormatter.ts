@@ -360,10 +360,12 @@ export const useFormatter = defineStore('formatter', {
         return dayjs(time).format('HH:mm:ss');
       }
       if (format === 'from') {
-        return dayjs(time).fromNow();
+        let res = dayjs(time).fromNow();
+        return res == '' ? '- ' + dayjs(time).toNow() : res;
       }
       if (format === 'to') {
-        return dayjs(time).toNow();
+        let res = dayjs(time).toNow();
+        return res == '' ? '- ' + dayjs(time).fromNow() : res;
       }
       return dayjs(time).format('YYYY-MM-DD HH:mm:ss');
     },

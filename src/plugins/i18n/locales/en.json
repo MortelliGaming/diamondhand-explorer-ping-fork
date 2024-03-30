@@ -20,14 +20,15 @@
     "add_to_favorite": "Add to favorite",
     "all_blockchains": "All Blockchain",
     "sponsors": "Sponsors",
-    "links": "Links"
+    "links": "Links",
+    "dhservices": "DH services"
   },
   "pages": {
-    "title": "Ping Dashboard",
+    "title": "diamondhand Dashboard",
     "title_all": "404",
     "tag": "Beta",
     "tag_all": "Page Not Found",
-    "slogan": "Ping Dashboard is not just an explorer but also a wallet and more ... 🛠",
+    "slogan": "diamond Dashboard is powered by ping.pub 🛠",
     "description": "Cosmos Ecosystem Blockchains 🚀",
     "search_placeholder": "Search Chain",
     "description_all": "We couldn't find the page you are looking for.",
@@ -254,6 +255,9 @@
     "no_messages": "No messages"
   },
   "uptime": {
+    "absent": "Absent",
+    "nil": "Voted nil",
+    "unknown": "Unkown",
     "overall": "Overall",
     "customize": "Customize",
     "only_consumer_set": "Only Consumer Set",
@@ -297,5 +301,18 @@
     "receive": "Receive",
     "app_versions": "Application Versions",
     "node_info": "Node Information"
+  },
+  "dhservices": {
+    "title": "diamondhand services",
+    "subtitle": "to get access to the diamondhand rpc/api, send a request to",
+    "architecture": "Architecture",
+    "statesync": "StateSync",
+    "nodeinstallation": "Node Installation",
+    "notAvailableYet": "Not available yet",
+    "nginx": "nginx",
+    "sentryvaldiatordescription": "Use Sentries to Protect Your Validator from DDOS!\nHide Your Ips behind a Proxy (nginx for example)!\nMake sure You configure Your Nodes right.",
+    "pexdisabledhint": "When PEX is disabled on your Validator it will not broadcast any transactions,\n make sure you add --node <rpcOfNodeWithPexEnabled> to your blockchain client commands!",
+    "examplesSoon": "We will add Configuration Examples Soon!",
+    "usenginx": "We reccommend u to use nginx as reverse proxy to hide your node's ip addresses.\nFor this u set the external address in config.toml and configure an ngix to redirect incoming requests."
   }
 }

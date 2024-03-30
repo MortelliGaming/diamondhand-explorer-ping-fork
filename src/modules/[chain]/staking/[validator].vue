@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import {
+useBaseStore,
   useBlockchain,
   useFormatter,
   useMintStore,
   useStakingStore,
   useTxDialog,
 } from '@/stores';
-import { onMounted, computed, ref } from 'vue';
+import { onMounted, computed, ref, onUnmounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import CommissionRate from '@/components/ValidatorCommissionRate.vue';
 import {
   consensusPubkeyToHexAddress,
   operatorAddressToAccount,
   pubKeyToValcons,
+  valconsToBase64
 } from '@/libs';
-import { PageRequest, type Coin, type Delegation, type PaginatedDelegations, type PaginatedTxs, type Validator } from '@/types';
+import { PageRequest, type Coin, type Delegation, type PaginatedDelegations, type PaginatedTxs, type Validator, type SigningInfo, type Commit } from '@/types';
 import PaginationBar from '@/components/PaginationBar.vue';
-import { fromBase64, toBase64 } from '@cosmjs/encoding';
+import { fromBase64, fromHex, toBase64 } from '@cosmjs/encoding';
 import { stringToUint8Array, uint8ArrayToString } from '@/libs/utils';
+import UptimeBar from '@/components/UptimeBar.vue';
+import type { PaginatedUnbonding } from '../../../types/staking';
 
 const props = defineProps(['validator', 'chain']);
 
@@ -36,6 +40,8 @@ const identity = ref('');
 const rewards = ref([] as Coin[] | undefined);
 const commission = ref([] as Coin[] | undefined);
 const delegations = ref({} as PaginatedDelegations)
+const undelegations = ref({} as PaginatedUnbonding)
+
 const addresses = ref(
   {} as {
     account: string;
@@ -45,6 +51,9 @@ const addresses = ref(
   }
 );
 const selfBonded = ref({} as Delegation);
+const valoperHex = computed(() => {
+  return toBase64(fromHex(staking.findRotatedHexAddress(v.value.consensus_pubkey)));
+});
 
 addresses.value.account = operatorAddressToAccount(validator);
 // load self bond
@@ -57,6 +66,7 @@ staking
   });
 
 const txs = ref({} as PaginatedTxs);
+const stakingDenom = ref('')
 
 blockchain.rpc.getTxsBySender(addresses.value.account).then((x) => {
   txs.value = x;
@@ -121,6 +131,10 @@ const loadAvatar = (identity: string) => {
 
 onMounted(() => {
   if (validator) {
+
+    blockchain.rpc.getStakingParams().then((x) => {
+        stakingDenom.value = x.params.bond_denom;
+    });
     staking.fetchValidator(validator).then((res) => {
       v.value = res.validator;
       identity.value = res.validator?.description?.identity || '';
@@ -159,8 +173,38 @@ onMounted(() => {
 
     // Disable delegations due to its bad performance
     // Comment out the following code if you want to enable it
-    // pageload(1)
-
+    pageload(1)
+    live.value = true;
+    baseStore.fetchLatest().then((l) => {
+      let b = l;
+      if (
+        baseStore.recents?.findIndex((x) => x.block_id.hash === l.block_id.hash) >
+        -1
+      ) {
+        b = baseStore.recents?.at(0) || l;
+      }
+      commits.value.unshift(b.block.last_commit);
+      const height = Number(b.block.header?.height || 0);
+      if (height > 50) {
+        // constructs sequence for loading blocks
+        let promise = Promise.resolve();
+        for (let i = height - 1; i > height - 50; i -= 1) {
+          promise = promise.then(
+            () =>
+              new Promise((resolve, reject) => {
+                if (live.value && commits2.value.length < 50) {
+                  // continue only if the page is living
+                  baseStore.fetchBlock(i).then((x) => {
+                    commits.value.unshift(x.block.last_commit);
+                    resolve();
+                  });
+                }
+              })
+          );
+        }
+      }
+    });
+    updateTotalSigningInfo();
   }
 });
 let showCopyToast = ref(0);
@@ -193,7 +237,10 @@ function pageload(p: number) {
 
   blockchain.rpc.getStakingValidatorsDelegations(validator, page).then(res => {
       delegations.value = res
-  }) 
+  })
+  blockchain.rpc.getStakingValidatorsDelegationsUnbonding(validator).then(res => {
+      undelegations.value = res
+  })
 }
 
 const events = ref({} as PaginatedTxs)
@@ -204,6 +251,29 @@ enum EventType {
 }
 
 const selectedEventType = ref(EventType.Delegate)
+const baseStore = useBaseStore();
+
+const signingInfo = ref({} as Record<string, SigningInfo>);
+const live = ref(true);
+
+const commits = ref([] as Commit[]);
+
+function updateTotalSigningInfo() {
+  blockchain.rpc.getSlashingSigningInfos().then((x) => {
+    x.info?.forEach((i) => {
+      signingInfo.value[valconsToBase64(i.address)] = i;
+    });
+  });
+}
+const commits2 = computed(() => {
+  const la = baseStore.recents.map((b) => b.block.last_commit);
+  // trigger update total signing info
+  if(la.length > 1 && Number(la.at(la.length-1)?.height|| 0) % 10 === 7) {
+    updateTotalSigningInfo();
+  };
+  const all = [...commits.value, ...la];
+  return all.length > 50 ? all.slice(all.length - 50) : all;
+});
 
 function loadPowerEvents(p: number, type: EventType) {
   selectedEventType.value = type
@@ -247,6 +317,9 @@ function mapDelegators(messages: any[]) {
   return Array.from(new Set(messages.map(x => x.delegator_address || x.grantee)))
 }
 
+onUnmounted(() => {
+  live.value = false;
+});
 </script>
 <template>
   <div>
@@ -352,6 +425,8 @@ function mapDelegators(messages: any[]) {
             </div>
           </div>
         </div>
+        <div>
+        </div>
         <div class="flex-1">
           <div class="flex flex-col mt-10">
             <div class="flex mb-2">
@@ -442,12 +517,23 @@ function mapDelegators(messages: any[]) {
                 <span class="text-sm">{{ $t('staking.unbonding_time') }}</span>
               </div>
             </div>
+            <!--
+            <div class="flex mb-2">
+              <div
+                class="flex items-center justify-center rounded w-10 h-10"
+                style="border: 1px solid #666"
+              >
+                <Icon icon="mdi:arrow-up-bold-circle-outline" class="text-3xl" />
+              </div>
+              <div class="ml-3 flex flex-col justify-center">
+                  <uptime-bar :validator="valoperHex" :blocks="commits2"/>
+              </div>
+            </div> -->
           </div>
         </div>
       </div>
       <div class="text-sm px-4 pt-3 border-t">{{ v.description?.details }}</div>
     </div>
-
     <div class="mt-3 grid grid-cols-1 md:!grid-cols-3 gap-4">
       <div>
         <CommissionRate :commission="v.commission"></CommissionRate>
@@ -590,6 +676,36 @@ function mapDelegators(messages: any[]) {
           </tbody>
         </table>
         <PaginationBar :total="delegations.pagination?.total" :limit="page.limit" :callback="pageload"/>
+      </div>
+    </div>
+
+    <div v-if="undelegations.unbonding_responses" class="mt-5 bg-base-100 shadow rounded p-4 ">
+      <div class="text-lg mb-4 font-semibold">{{ $t('account.unbonding_delegations') }}
+        <span class="float-right"> {{ undelegations.unbonding_responses?.length || 0 }} / {{ undelegations.pagination?.total || 0 }} </span>
+      </div>
+      <div class="rounded overflow-auto">
+        <table class="table validatore-table w-full">
+          <thead>
+            <th class="text-left pl-4" style="position: relative; z-index: 2">
+              {{ $t('account.delegator') }}
+            </th>
+            <th class="text-left pl-4">{{ $t('account.unbonding_delegations') }}</th>
+          </thead>
+          <tbody v-for="unbonding in undelegations.unbonding_responses">
+            <tr v-for="(entry, index) in unbonding.entries">
+              <td v-if="index === 0" class="text-sm text-primary">
+                {{ unbonding.delegator_address }}
+              </td>
+              <td class="truncate text-primary">
+                {{ format.formatToken({
+                  denom: stakingDenom,
+                  amount: entry.balance
+                })}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <PaginationBar :total="undelegations.pagination?.total" :limit="page.limit" :callback="pageload"/>
       </div>
     </div>
 

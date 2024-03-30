@@ -1,0 +1,37 @@
+{
+    "chain_name": "crossfi testnet",
+    "coingecko": "crossfi",
+    "api": ["https://crossfitestnetapi.diamondhand.capital"],
+    "rpc": ["https://crossfitestnetrpc.diamondhand.capital"],
+    "snapshot_provider": "",
+    "sdk_version": "0.46.1",
+    "coin_type": "60",
+    "min_tx_fee": "800",
+    "addr_prefix": "mx",
+    "logo": "/logos/crossfi.jpeg",
+    "theme_color": "#812cd6",
+    "keplr_features": ["eth-address-gen", "eth-key-sign", "ibc-transfer", "ibc-go"],
+    "assets": [{
+        "base": "xfi",
+        "symbol": "XFI",
+        "exponent": "18",
+        "coingecko_id": "xfi", 
+        "logo": "/logos/xfi.jpeg"
+    },{
+        "base": "mpx",
+        "symbol": "MPX",
+        "exponent": "18",
+        "coingecko_id": "xfi_mpx", 
+        "logo": "/logos/xfi.jpeg"
+    },{
+        "base": "xft",
+        "symbol": "XFT",
+        "exponent": "18",
+        "coingecko_id": "xft", 
+        "logo": "/logos/xfi.jpeg"
+    }],
+    "dhservices": {
+        "api": "https://crossfitestnetapi.diamondhand.capital",
+        "rpc": "https://crossfitestnetrpc.diamondhand.capital"
+    }
+}

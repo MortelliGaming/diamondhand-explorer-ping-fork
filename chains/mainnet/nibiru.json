@@ -1,0 +1,33 @@
+{
+    "chain_name": "Nibiru",
+    "api":[
+      "https://api.nibiru.nodestake.top",
+      "https://nibiru.api.kjnodes.com"
+    ],
+    "rpc":[
+      "https://rpc.nibiru.nodestake.top",
+      "https://nibiru.rpc.kjnodes.com"
+    ],
+    "snapshot_provider": "",
+    "sdk_version": "0.46.0",
+    "coin_type": 118,
+    "min_tx_fee": "5000",
+    "assets": [
+      {
+        "base": "unibi",
+        "symbol": "NIBI",
+        "exponent": 6,
+        "coingecko_id": "nibiru",
+        "logo": "https://assets.coingecko.com/coins/images/34980/standard/4ZmR5YS3_400x400.jpg?1706864791"
+      },
+      {
+        "base": "unusd",
+        "symbol": "NUSD",
+        "exponent": 6,
+        "coingecko_id": "nusd",
+        "logo": ""
+      }
+    ],
+    "addr_prefix": "nibi",
+    "logo": "https://assets.coingecko.com/coins/images/34980/standard/4ZmR5YS3_400x400.jpg?1706864791"
+  }

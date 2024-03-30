@@ -16,6 +16,14 @@
         rel="noopener noreferrer"
         >Ping.pub</a
       >
+      <div>, Sugar added by&nbsp;</div>
+      <a
+        class="link link-primary no-underline"
+        href="https://diamondhand.capital"
+        target="_blank"
+        rel="noopener noreferrer"
+        >diamondhand.captial</a
+      >
     </div>
     <div
       class="hidden md:!block"

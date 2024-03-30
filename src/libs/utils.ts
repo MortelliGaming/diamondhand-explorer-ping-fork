@@ -204,3 +204,25 @@ export function rgbToHsl(color: string) {
     l,
   };
 }
+
+export function getTimeComponents(timestamp: number): { days: number, hours: number, minutes: number, seconds: number } {
+  // Convert milliseconds to seconds
+  let totalSeconds = Math.floor(timestamp / 1000);
+
+  // Calculate days
+  const days = Math.floor(totalSeconds / (60 * 60 * 24));
+  totalSeconds -= days * (60 * 60 * 24);
+
+  // Calculate hours
+  const hours = Math.floor(totalSeconds / (60 * 60));
+  totalSeconds -= hours * (60 * 60);
+
+  // Calculate minutes
+  const minutes = Math.floor(totalSeconds / 60);
+  totalSeconds -= minutes * 60;
+
+  // The remaining totalSeconds will be the seconds
+  const seconds = totalSeconds;
+
+  return { days, hours, minutes, seconds };
+}

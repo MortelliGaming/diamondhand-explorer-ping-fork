@@ -1,20 +1,23 @@
-// import 'ping-widget';
 import App from '@/App.vue';
 import i18n from '@/plugins/i18n';
 import '@/style.css';
-import { createApp, ref } from 'vue';
+import { createApp, ref, markRaw } from 'vue';
 import { createPinia } from 'pinia';
 import LazyLoad from 'lazy-load-vue3';
 
 import router from './router';
 import { useBaseStore } from './stores/useBaseStore';
 
+const pinia = createPinia();
+pinia.use(({ store }) => {
+  store.router = markRaw(router)
+});
 // Create vue app
 const app = createApp(App);
 // Use plugins
 app.use(i18n);
-app.use(createPinia());
 app.use(router);
+app.use(pinia);
 app.use(LazyLoad, { component: true });
 // Mount vue app
 app.mount('#app');

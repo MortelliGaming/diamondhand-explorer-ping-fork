@@ -4,6 +4,7 @@ import {
   toBech32,
   toHex,
 } from '@cosmjs/encoding';
+
 import { Ripemd160, sha256 } from '@cosmjs/crypto';
 
 export function decodeAddress(address: string) {

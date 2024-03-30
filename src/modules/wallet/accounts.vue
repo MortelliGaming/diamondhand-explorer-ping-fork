@@ -18,7 +18,7 @@ const dashboard = useDashboard();
 const chainStore = useBlockchain()
 const format = useFormatter();
 const sourceAddress = ref(''); //
-const sourceHdPath = ref("m/44/118/0'/0/0"); //
+const sourceHdPath = ref(`m/44/${ (chainStore.current?.coinType || '118') }/0'/0/0`); //
 const selectedSource = ref({} as LocalKey); //
 const importStep = ref('step1')
 
@@ -127,6 +127,7 @@ const totalChange = computed(() => {
 
 // Adding Model Boxes
 const availableAccount = computed(() => {
+  // console.log(scanCompatibleAccounts([{cosmosAddress: sourceAddress.value, hdPath: sourceHdPath.value }]))
   if (sourceAddress.value) {
     return scanCompatibleAccounts([{cosmosAddress: sourceAddress.value, hdPath: sourceHdPath.value }]).filter(
       (x) => !addresses.value.includes(x.address)

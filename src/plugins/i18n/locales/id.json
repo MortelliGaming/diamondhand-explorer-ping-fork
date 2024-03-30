@@ -18,14 +18,15 @@
       "add_to_favorite": "Tambahkan ke favorit",
       "all_blockchains": "All Blockchain",
       "sponsors": "Sponsors",
-      "links": "Tautan"
+      "links": "Tautan",
+      "dhservices": "DH services"
     },
     "pages": {
-      "title": "Ping Dashboard",
+      "title": "diamondhand Dashboard",
       "title_all": "404",
       "tag": "Beta",
       "tag_all": "Halaman Tidak Ditemukan",
-      "slogan": "Ping Dashboard bukan hanya sebuah penjelajah tetapi juga sebuah dompet dan masih banyak lagi ... 🛠",
+      "slogan": "diamondhand Dashboard powered by pong.pub ... 🛠",
       "description": "Cosmos Ecosystem Blockchains 🚀",
       "search_placeholder": "Telusuri Rantai",
       "description_all": "Kami tidak dapat menemukan halaman yang anda cari.",
@@ -240,6 +241,9 @@
       "no_messages": "Tidak ada pesan"
     },
     "uptime": {
+      "absent": "absent",
+      "nil": "vote nil",
+      "unknown": "unkown",
       "overall": "Secara keseluruhan",
       "customize": "Sesuaikan",
       "only_consumer_set": "Hanya Pengatur Konsumen",
@@ -283,5 +287,14 @@
       "receive": "Terima",
       "app_versions": "Versi Aplikasi",
       "node_info": "Informasi Node"
+    },
+    "dhservices": {
+      "title": "diamondhand services",
+      "subtitle": "to get access to the diamondhand rpc/api, send a request to",
+      "architecture": "Architecture",
+      "statesync": "StateSync",
+      "nodeinstallation": "Node Installation",
+      "notAvailableYet": "Not available yet",
+      "nginx": "nginx"
     }
 }

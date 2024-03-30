@@ -21,6 +21,7 @@ import { ref, reactive } from 'vue';
 import Countdown from '@/components/Countdown.vue';
 import PaginationBar from '@/components/PaginationBar.vue';
 import { fromBech32, toHex } from '@cosmjs/encoding';
+import { useNow } from '@vueuse/core';
 
 
 const props = defineProps(['proposal_id', 'chain']);
@@ -118,9 +119,11 @@ function shortTime(v: string) {
 }
 
 const votingCountdown = computed((): number => {
-  const now = new Date();
-  const end = new Date(proposal.value.voting_end_time);
-  return end.getTime() - now.getTime();
+  const now = Date.now();
+  const end = Date.parse(proposal .value?.voting_end_time);
+  console.log(now)
+  console.log(end)
+  return end - now;
 });
 
 const upgradeCountdown = computed((): number => {
@@ -214,7 +217,14 @@ function pageload(p: number) {
 }
 
 function metaItem(metadata: string|undefined): { title: string; summary: string } {
-  return metadata ? JSON.parse(metadata) : {}
+  let response = {
+    title: '',
+    summary: ''
+  }
+  try {
+    response = JSON.parse(metadata ? metadata : '') as { title: string; summary: string }
+  } catch {}
+  return response;
 }
 </script>
 
@@ -336,7 +346,7 @@ function metaItem(metadata: string|undefined): { title: string; summary: string 
               </div>
             </div>
             <div class="pl-5 text-sm mt-2">
-              <Countdown :time="votingCountdown" />
+              <Countdown :time="isNaN(votingCountdown) ? 0 : votingCountdown" />
             </div>
           </div>
           <div>

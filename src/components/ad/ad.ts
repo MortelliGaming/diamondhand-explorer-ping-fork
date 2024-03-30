@@ -11,11 +11,11 @@ export const confs: Record<string, ADConfig> = {
     //     environment: 'staging', // use value 'production' when going live
     // },
     "ping.pub": {
-        apiKey: 'persona-pub-0x6ca028de83d9bc438bb3fd7f9620f36b',
+        apiKey: 'persona-pub-0x6ca028de83d9bc438bb3fd7f9620f36b-',
         environment: 'production',
     },
     "testnet.ping.pub": {
-        apiKey: 'persona-pub-0x14e9ba8ca5a658ba409fc0059ebc3711',
+        apiKey: 'persona-pub-0x14e9ba8ca5a658ba409fc0059ebc3711-',
         environment: 'production',
     }
 }

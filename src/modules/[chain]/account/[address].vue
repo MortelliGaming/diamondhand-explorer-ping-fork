@@ -21,6 +21,7 @@ import type {
 import type { Coin } from '@cosmjs/amino';
 import Countdown from '@/components/Countdown.vue';
 import { fromBase64 } from '@cosmjs/encoding';
+import { decodeAddress, addressEnCode } from '@/libs';
 
 const props = defineProps(['address', 'chain']);
 
@@ -32,6 +33,7 @@ const account = ref({} as AuthAccount);
 const txs = ref({} as TxResponse[]);
 const delegations = ref([] as Delegation[]);
 const rewards = ref({} as DelegatorRewards);
+const commission = ref([] as Coin[]);
 const balances = ref([] as Coin[]);
 const recentReceived = ref([] as TxResponse[]);
 const unbonding = ref([] as UnbondingResponses[]);
@@ -59,10 +61,23 @@ const totalAmountByCategory = computed(() => {
       sumUn += Number(y.balance);
     });
   });
-  return [sumBal, sumDel, sumRew, sumUn];
+  let sumCo = 0;
+  commission.value?.forEach((x) => {
+      sumCo += Number(x.amount);
+  });
+  let result = [sumBal, sumDel, sumRew, sumUn]
+  // Add Commission Only to chart when there is comission)
+  if(sumCo > 0) {
+    result.push(sumCo);
+  }
+  return result;
 });
 
-const labels = ['Balance', 'Delegation', 'Reward', 'Unbonding'];
+const labels = computed(() => {
+  return totalAmountByCategory.value.length === 5
+    ? ['Balance', 'Delegation', 'Reward', 'Unbonding', 'Comission']
+    : ['Balance', 'Delegation', 'Reward', 'Unbonding']
+});
 
 const totalAmount = computed(() => {
   return totalAmountByCategory.value.reduce((p, c) => c + p, 0);
@@ -84,10 +99,16 @@ const totalValue = computed(() => {
       value += format.tokenValueNumber({amount: y.balance, denom: stakingStore.params.bond_denom});
     });
   });
+  commission.value?.forEach((x) => {
+    value += format.tokenValueNumber(x);
+  });
   return format.formatNumber(value, '0,0.00');
 });
 
-
+const valoperaddress = computed(() => {
+  return addressEnCode(blockchain.current?.bech32Prefix + 'valoper', decodeAddress(props.address).data);
+});
+  
 function loadAccount(address: string) {
   blockchain.rpc.getAuthAccount(address).then((x) => {
     account.value = x.account;
@@ -110,6 +131,14 @@ function loadAccount(address: string) {
       y.entries.forEach((z) => {
         unbondingTotal.value += Number(z.balance);
       });
+    });
+  });
+  blockchain.rpc.getDistributionValidatorCommission(valoperaddress.value).then((res) => {
+    commission.value = res.commission?.commission || [];
+    res.commission?.commission?.forEach((x) => {
+      if (x.denom.startsWith('ibc/')) {
+        format.fetchDenomTrace(x.denom);
+      }
     });
   });
 
@@ -258,6 +287,37 @@ function mapAmount(events:{type: string, attributes: {key: string, value: string
                   class="inset-x-0 inset-y-0 opacity-10 absolute bg-primary dark:invert text-sm"
                 ></span>
                 ${{ format.tokenValue(delegationItem?.balance) }}                
+              </div>
+            </div>
+          <!-- commission -->
+            <div
+              class="flex items-center px-4 mb-2"
+              v-for="(comissionItem, index) in commission"
+              :key="index"
+            >
+              <div
+                class="w-9 h-9 rounded overflow-hidden flex items-center justify-center relative mr-4"
+              >
+                <Icon icon="mdi-account-lock" class="text-orange" size="20" />
+                <div
+                  class="absolute top-0 bottom-0 left-0 right-0 bg-orange opacity-20"
+                ></div>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm font-semibold">
+                  {{ format.formatToken(comissionItem) }}
+                </div>
+                <div class="text-xs">
+                  {{ format.calculatePercent(comissionItem.amount, totalAmount) }}
+                </div>
+              </div>
+              <div
+                class="text-xs truncate relative py-1 px-3 rounded-full w-fit text-primary dark:invert mr-2"
+              >
+                <span
+                  class="inset-x-0 inset-y-0 opacity-10 absolute bg-primary dark:invert text-sm"
+                ></span>
+                ${{ format.tokenValue(comissionItem) }}                
               </div>
             </div>
             <!-- rewards.total -->

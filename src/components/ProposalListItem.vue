@@ -40,7 +40,14 @@ const voterStatusMap: Record<string, string> = {
 const proposalInfo = ref();
 
 function metaItem(metadata: string|undefined): { title: string; summary: string } {
-  return metadata ? JSON.parse(metadata) : {}
+  let response = {
+    title: '',
+    summary: ''
+  }
+  try {
+    response = JSON.parse(metadata ? metadata : '') as { title: string; summary: string }
+  } catch {}
+  return response;
 }
 
 </script>
@@ -61,7 +68,7 @@ function metaItem(metadata: string|undefined): { title: string; summary: string 
           <td class="w-full">
             <div>
               <RouterLink
-                :to="`/${chain.chainName}/gov/${item?.proposal_id}`"
+                :to="`/${chain?.chainName}/gov/${item?.proposal_id}`"
                 class="text-main text-base mb-1 block hover:text-indigo-400 truncate"
               >
                 {{ item?.content?.title || item?.title || metaItem(item?.metadata)?.title }}

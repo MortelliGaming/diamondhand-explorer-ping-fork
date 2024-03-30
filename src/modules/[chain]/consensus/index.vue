@@ -33,7 +33,7 @@ onMounted(async () => {
   clearTime()
   timer = setInterval(() => {
     update();
-  }, 6000);
+  }, 3000);
 });
 onUnmounted(() => {
   clearTime();
@@ -95,7 +95,9 @@ async function onChange () {
 async function fetchPosition() {
   let dumpurl = rpc.value.replace('consensus_state', 'dump_consensus_state');
   try {
+    console.log(dumpurl)
     const response = await fetch(dumpurl);
+    
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }

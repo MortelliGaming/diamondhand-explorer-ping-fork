@@ -107,7 +107,7 @@ export const DEFAULT: RequestRegistry = {
     adapter,
   },
   staking_validators_delegations_unbonding_delegations: {
-    url: '/cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}/unbonding_delegation',
+    url: '/cosmos/staking/v1beta1/validators/{validator_addr}/unbonding_delegations',
     adapter,
   },
   base_tendermint_abci_query: {

@@ -56,7 +56,7 @@ async function initParamsForKeplr() {
         bip44: {
             coinType: Number(chain.coinType),
         },
-        coinType: Number(chain.coinType),
+        // coinType: Number(chain.coinType),
         bech32Config: {
             bech32PrefixAccAddr: chain.bech32Prefix,
             bech32PrefixAccPub: `${chain.bech32Prefix}pub`,
@@ -73,16 +73,15 @@ async function initParamsForKeplr() {
                 coinGeckoId: chain.assets[0].coingecko_id || 'unknown',
             },
         ],
-        feeCurrencies: [
-            {
-                coinDenom: chain.assets[0].symbol,
-                coinMinimalDenom: chain.assets[0].base,
+        feeCurrencies: chain.assets.map(asset => {
+            return {
+                coinDenom: asset.symbol,
+                coinMinimalDenom: asset.base,
                 coinDecimals,
-                coinGeckoId: chain.assets[0].coingecko_id || 'unknown',
+                coinGeckoId: asset.coingecko_id || 'unknown',
                 gasPriceStep,
-            },
-        ],
-        gasPriceStep,
+            };
+        }),
         stakeCurrency: {
             coinDenom: chain.assets[0].symbol,
             coinMinimalDenom: chain.assets[0].base,
@@ -137,7 +136,7 @@ function suggest() {
             })
         }
     } else {
-        suggestChain(JSON.parse(conf.value));
+        suggestChain(JSON.parse(conf.value), {});
     }
 }
 

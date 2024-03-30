@@ -86,6 +86,10 @@ export interface ChainConfig {
     average: number,
     high: number,
   },
+  dhservices: {
+    api: string,
+    rpc: string
+  }
 }
 
 export interface LocalConfig {
@@ -118,6 +122,10 @@ export interface LocalConfig {
     high: number,
   },
   keplr_features: string[],
+  dhservices: {
+    api: string,
+    rpc: string
+  }
 }
 
 function apiConverter(api: any[]) {
@@ -173,6 +181,7 @@ export function fromLocal(lc: LocalConfig): ChainConfig {
   conf.keplrFeatures = lc.keplr_features;
   conf.keplrPriceStep = lc.keplr_price_step;
   conf.themeColor = lc.theme_color;
+  conf.dhservices = lc.dhservices
   return conf;
 }
 
@@ -189,11 +198,12 @@ export function fromDirectory(source: DirectoryChain): ChainConfig {
       cosmosSdk: source.versions?.cosmos_sdk_version || '',
       tendermint: source.versions?.tendermint_version || '',
     }),
-    (conf.logo = pathConvert(source.image));
+    // (conf.logo = pathConvert(source.image));
   conf.endpoints = source.best_apis;
   return conf;
 }
 
+/*
 function pathConvert(path: string | undefined) {
   if (path) {
     path = path.replace(
@@ -203,7 +213,7 @@ function pathConvert(path: string | undefined) {
   }
   return path || '';
 }
-
+*/
 export function getLogo(
   conf:
     | {
@@ -214,7 +224,7 @@ export function getLogo(
     | undefined
 ) {
   if (conf) {
-    return pathConvert(conf.svg || conf.png || conf.jpeg);
+    return undefined // pathConvert(conf.svg || conf.png || conf.jpeg);
   }
   return undefined;
 }

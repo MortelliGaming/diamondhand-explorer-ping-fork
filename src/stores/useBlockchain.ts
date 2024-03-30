@@ -11,7 +11,6 @@ import type {
   NavSectionTitle,
   VerticalNavItems,
 } from '@/layouts/types';
-import { useRouter } from 'vue-router';
 import { CosmosRestClient } from '@/libs/client';
 import {
   useBankStore,
@@ -65,8 +64,7 @@ export const useBlockchain = defineStore('blockchain', {
     },
     computedChainMenu() {
       let currNavItem: VerticalNavItems = [];
-      const router = useRouter();
-      const routes = router?.getRoutes() || [];
+      const routes = (this as any).router?.getRoutes() || [];
       if (this.current && routes) {
         if (this.current?.themeColor) {
           const { color } = hexToRgb(this.current?.themeColor);
@@ -85,20 +83,20 @@ export const useBlockchain = defineStore('blockchain', {
             badgeContent: this.isConsumerChain ? 'Consumer' : undefined,
             badgeClass: 'bg-error',
             children: routes
-              .filter((x) => x.meta.i18n) // defined menu name
+              .filter((x: any) => x.meta.i18n) // defined menu name
               .filter(
-                (x) =>
+                (x: any) =>
                   !this.current?.features ||
                   this.current.features.includes(String(x.meta.i18n))
               ) // filter none-custom module
-              .map((x) => ({
+              .map((x: any) => ({
                 title: `module.${x.meta.i18n}`,
                 to: { path: x.path.replace(':chain', this.chainName) },
                 icon: { icon: 'mdi-chevron-right', size: '22' },
                 i18n: true,
                 order: Number(x.meta.order || 100),
               }))
-              .sort((a, b) => a.order - b.order),
+              .sort((a: any, b: any) => a.order - b.order),
           },
         ];
       }

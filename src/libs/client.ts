@@ -240,11 +240,10 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
   }
   async getStakingValidatorsDelegationsUnbonding(
     validator_addr: string,
-    delegator_addr: string
   ) {
     return this.request(
       this.registry.staking_validators_delegations_unbonding_delegations,
-      { validator_addr, delegator_addr }
+      { validator_addr }
     );
   }
 

@@ -139,9 +139,27 @@ function fillblock(b: Block, direction: string = 'end') {
       color: 'bg-red-500'
     }
     if (sig) {
-      color = {
-        height: b.block.header.height,
-        color: sig.block_id_flag === 'BLOCK_ID_FLAG_COMMIT' ? 'bg-green-500' : 'bg-yellow-500'
+      switch(sig.block_id_flag) {
+        /*
+          enum BlockIDFlag {
+            BLOCK_ID_FLAG_UNKNOWN = 0 [(gogoproto.enumvalue_customname) = "BlockIDFlagUnknown"];
+            BLOCK_ID_FLAG_ABSENT = 1 [(gogoproto.enumvalue_customname) = "BlockIDFlagAbsent"];
+            BLOCK_ID_FLAG_COMMIT = 2 [(gogoproto.enumvalue_customname) = "BlockIDFlagCommit"];
+            BLOCK_ID_FLAG_NIL = 3 [(gogoproto.enumvalue_customname) = "BlockIDFlagNil"];
+          }
+        */
+        case 'BLOCK_ID_FLAG_COMMIT':
+          color.color = 'bg-green-500';
+          break;
+        case 'BLOCK_ID_FLAG_ABSENT':
+          color.color = 'bg-yellow-500';
+          break;
+        case 'BLOCK_ID_FLAG_NIL':
+          color.color = 'bg-violet-500';
+          break;
+        case 'BLOCK_ID_FLAG_UNKNOWN':
+          color.color = 'bg-cyan-500';
+          break;
       }
     }
     if (direction === 'end') {
@@ -222,8 +240,10 @@ function fetchAllKeyRotation() {
         <div class="mt-5 text-xs flex justify-center gap-2">
           <span class=" font-bold">{{ $t('uptime.legend') }}: </span>
           <span class="bg-green-500">&nbsp;</span> {{ $t('uptime.committed') }}
-          <span class="bg-yellow-500">&nbsp;</span> {{ $t('uptime.precommitted') }}
           <span class="bg-red-500">&nbsp;</span> {{ $t('uptime.missed') }}
+          <span class="bg-yellow-500">&nbsp;</span> {{ $t('uptime.absent') }}
+          <span class="bg-violet-500">&nbsp;</span> {{ $t('uptime.nil') }}
+          <span class="bg-cyan-500">&nbsp;</span> {{ $t('uptime.unknown') }}
         </div>
       </div>
 

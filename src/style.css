@@ -52,3 +52,10 @@ html[data-theme='dark'] {
   opacity: 0;
   transform: translateY(-calc(15%));
 }
+
+.text-orange {
+  color: violet;
+}
+.bg-orange {
+  background-color: violet;
+}
