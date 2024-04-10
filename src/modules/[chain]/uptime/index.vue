@@ -224,7 +224,7 @@ function fetchAllKeyRotation() {
           <div v-for="(unit, i) in grid" :key="i">
             <div class="flex justify-between py-0 w-[248px]">
               <label class="truncate text-sm">
-                <span class="ml-1 text-black dark:text-white">{{ i + 1 }}.{{ unit.moniker }}</span>
+                <span class="ml-1 text-white dark:text-white">{{ i + 1 }}.{{ unit.moniker }}</span>
               </label>
               <div v-if="Number(unit?.missed_blocks_counter || 0) > 10"
                 class="badge badge-sm bg-transparent border-0 text-red-500 font-bold">

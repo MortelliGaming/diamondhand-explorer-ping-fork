@@ -3,9 +3,15 @@ import { useBaseStore, useBlockchain, useWalletStore } from '@/stores';
 import { Icon } from '@iconify/vue';
 import { ref, computed } from 'vue';
 
+import { DhConnectWallet } from 'dh-widget'
+import { useDashboard } from '@/stores/useDashboard';
+import type { BlockchainConfigSimple } from 'dh-widget/src/lib/utils/type';
+
 const walletStore = useWalletStore();
 const chainStore = useBlockchain();
 const baseStore = useBaseStore();
+const dashboard = useDashboard()
+
 // walletStore.$subscribe((m, s) => {
 //   console.log(m, s);
 // });
@@ -35,6 +41,10 @@ const tipMsg = computed(() => {
 </script>
 
 <template>
+  <dh-connect-wallet 
+    v-if="chainStore.current?.chainName" 
+    :blockchain-config="((dashboard.localConfigs[chainStore.chainName] as any) as BlockchainConfigSimple)" />
+
   <div class="dropdown dropdown-hover dropdown-end">
     <label tabindex="0" class="btn btn-sm btn-primary m-1 lowercase truncate !inline-flex text-xs md:!text-sm">
       <Icon icon="mdi:wallet" />
@@ -90,8 +100,4 @@ const tipMsg = computed(() => {
 </template>
 
 <style>
-.ping-connect-btn,
-.ping-connect-dropdown {
-  display: none !important;
-}
 </style>

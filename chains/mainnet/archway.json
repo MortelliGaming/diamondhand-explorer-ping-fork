@@ -1,5 +1,6 @@
 {
     "chain_name": "archway",
+    "chainId": "archway-1",
     "api": [
         "https://api.mainnet.archway.io",
         "https://api-1.archway.nodes.guru",

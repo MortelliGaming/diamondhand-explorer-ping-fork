@@ -6,6 +6,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import Layouts from 'vite-plugin-vue-layouts';
 import DefineOptions from 'unplugin-vue-define-options/vite';
 import AutoImport from 'unplugin-auto-import/vite';
+import inject from '@rollup/plugin-inject'
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import Pages from 'vite-plugin-pages';
 
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
@@ -36,7 +38,7 @@ export default defineConfig({
     Layouts({
       layoutsDirs: './src/layouts/',
     }),
-    AutoImport({
+    /*AutoImport({
       imports: [
         'vue',
         'vue-router',
@@ -46,7 +48,7 @@ export default defineConfig({
         'pinia',
       ],
       vueTemplate: true,
-    }),
+    }), */
     VueI18nPlugin({
       runtimeOnly: true,
       compositionOnly: true,
@@ -56,7 +58,6 @@ export default defineConfig({
         ),
       ],
     }),
-    DefineOptions(),
   ],
   resolve: {
     alias: {

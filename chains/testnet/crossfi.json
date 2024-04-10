@@ -1,8 +1,10 @@
 {
     "chain_name": "crossfi testnet",
     "coingecko": "crossfi",
-    "api": ["https://crossfitestnetapi.diamondhand.capital"],
-    "rpc": ["https://crossfitestnetrpc.diamondhand.capital"],
+    "chainId": "crossfi-evm-testnet-1",
+    "api": ["https://crossfi-testnet-api.itrocket.net:443", "https://crossfitestnetapi.diamondhand.capital"],
+    "rpc": ["https://crossfi-testnet-rpc.itrocket.net:443", "https://crossfitestnetrpc.diamondhand.capital"],
+    "jsonRpc": [],
     "snapshot_provider": "",
     "sdk_version": "0.46.1",
     "coin_type": "60",
@@ -11,27 +13,30 @@
     "logo": "/logos/crossfi.jpeg",
     "theme_color": "#812cd6",
     "keplr_features": ["eth-address-gen", "eth-key-sign", "ibc-transfer", "ibc-go"],
+    "has_evm_features": true,
     "assets": [{
         "base": "xfi",
         "symbol": "XFI",
         "exponent": "18",
         "coingecko_id": "xfi", 
-        "logo": "/logos/xfi.jpeg"
+        "logo": "/logos/xfi.jpeg",
+        "isFeeAsset": true,
+        "isStakingAsset": false
     },{
         "base": "mpx",
         "symbol": "MPX",
         "exponent": "18",
         "coingecko_id": "xfi_mpx", 
-        "logo": "/logos/xfi.jpeg"
+        "logo": "/logos/xfi.jpeg",
+        "isFeeAsset": true,
+        "isStakingAsset": true
     },{
         "base": "xft",
         "symbol": "XFT",
         "exponent": "18",
         "coingecko_id": "xft", 
-        "logo": "/logos/xfi.jpeg"
-    }],
-    "dhservices": {
-        "api": "https://crossfitestnetapi.diamondhand.capital",
-        "rpc": "https://crossfitestnetrpc.diamondhand.capital"
-    }
-}
+        "logo": "/logos/xfi.jpeg",
+        "isFeeAsset": false,
+        "isStakingAsset": false
+    }]
+  }

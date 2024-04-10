@@ -279,6 +279,7 @@ export const useDashboard = defineStore('dashboard', {
       networkType: NetworkType.Mainnet,
       favoriteMap: favMap as Record<string, boolean>,
       chains: {} as Record<string, ChainConfig>,
+      localConfigs: {} as Record<string, LocalConfig>,
       prices: {} as Record<string, any>,
       coingecko: {} as Record<string, {coinId: string, exponent: number, symbol: string}>,
     };
@@ -337,6 +338,7 @@ export const useDashboard = defineStore('dashboard', {
           ? import.meta.glob('../../chains/mainnet/*.json', { eager: true })
           : import.meta.glob('../../chains/testnet/*.json', { eager: true });
       Object.values<LocalConfig>(source).forEach((x: LocalConfig) => {
+        this.localConfigs[x.chain_name] = x
         this.chains[x.chain_name] = fromLocal(x);
       });
       this.setupDefault();

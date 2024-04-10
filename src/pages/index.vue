@@ -113,6 +113,7 @@ const chainStore = useBlockchain()
       />
     </div>
   </div>
+  
 </template>
 
 <style scoped>

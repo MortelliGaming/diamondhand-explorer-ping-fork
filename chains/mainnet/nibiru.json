@@ -1,5 +1,6 @@
 {
     "chain_name": "Nibiru",
+    "chainId": "cataclysm-1",
     "api":[
       "https://api.nibiru.nodestake.top",
       "https://nibiru.api.kjnodes.com"

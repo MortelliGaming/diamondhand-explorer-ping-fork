@@ -682,6 +682,11 @@
   dependencies:
     axios "1.6.0"
 
+"@esbuild-plugins/node-globals-polyfill@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.npmjs.org/@esbuild-plugins/node-globals-polyfill/-/node-globals-polyfill-0.2.3.tgz"
+  integrity sha512-r3MIryXDeXDOZh7ih1l/yE9ZLORCd5e8vWg02azWRGj5SPTuoh69A2AIyn0Z31V/kHBfZ4HgWJ+OK3GTTwLmnw==
+
 "@esbuild/darwin-x64@0.18.20":
   version "0.18.20"
   resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.18.20.tgz"
@@ -820,6 +825,11 @@
     bech32 "1.1.4"
     idna-uts46-hx "5.0.7"
     js-sha3 "0.8.0"
+
+"@mdi/font@^7.4.47":
+  version "7.4.47"
+  resolved "https://registry.npmjs.org/@mdi/font/-/font-7.4.47.tgz"
+  integrity sha512-43MtGpd585SNzHZPcYowu/84Vz2a2g31TvPMTm9uTiCSWzaheQySUcSyUH/46fPnuPQWof2yd0pGBtzee/IQWw==
 
 "@noble/hashes@^1", "@noble/hashes@^1.0.0":
   version "1.4.0"
@@ -969,6 +979,15 @@
   resolved "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@rollup/plugin-inject@^5.0.5":
+  version "5.0.5"
+  resolved "https://registry.npmjs.org/@rollup/plugin-inject/-/plugin-inject-5.0.5.tgz"
+  integrity sha512-2+DEJbNBoPROPkgTDNe8/1YXWcqxbN5DTjASVIOx8HS+pITXushyNiBV56RB08zuptzz8gT3YfkqriTBVycepg==
+  dependencies:
+    "@rollup/pluginutils" "^5.0.1"
+    estree-walker "^2.0.2"
+    magic-string "^0.30.3"
+
 "@rollup/pluginutils@^4.2.0":
   version "4.2.1"
   resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-4.2.1.tgz"
@@ -976,6 +995,15 @@
   dependencies:
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
+
+"@rollup/pluginutils@^5.0.1":
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-5.1.0.tgz"
+  integrity sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==
+  dependencies:
+    "@types/estree" "^1.0.0"
+    estree-walker "^2.0.2"
+    picomatch "^2.3.1"
 
 "@rollup/pluginutils@^5.0.2":
   version "5.1.0"
@@ -2379,6 +2407,52 @@ destr@^2.0.0:
   resolved "https://registry.npmjs.org/destr/-/destr-2.0.3.tgz"
   integrity sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==
 
+"dh-widget@file:../dh-widget":
+  version "0.0.0"
+  resolved "file:../dh-widget"
+  dependencies:
+    "@cosmjs/amino" "^0.32.3"
+    "@cosmjs/cosmwasm-stargate" "^0.32.3"
+    "@cosmjs/crypto" "^0.32.3"
+    "@cosmjs/encoding" "^0.32.3"
+    "@cosmjs/ledger-amino" "^0.32.3"
+    "@cosmjs/proto-signing" "^0.32.3"
+    "@cosmjs/stargate" "^0.32.3"
+    "@cosmjs/tendermint-rpc" "^0.32.3"
+    "@ethersproject/hash" "^5.7.0"
+    "@leapwallet/cosmos-snap-provider" "^0.1.26"
+    "@ledgerhq/hw-transport-web-ble" "^6.28.5"
+    "@ledgerhq/hw-transport-webusb" "^6.28.5"
+    "@mdi/font" "6.2.95"
+    "@tharsis/eip712" "^0.2.4"
+    "@tharsis/transactions" "^0.2.6"
+    core-js "^3.34.0"
+    cross-fetch "^4.0.0"
+    fflate "^0.8.2"
+    roboto-fontface "*"
+    vue "^3.4.21"
+    vue-i18n "^9.10.2"
+    vuetify "^3.5.8"
+
+"diamondhand-widget@file:../diamondhand-widget":
+  version "0.0.0"
+  resolved "file:../diamondhand-widget"
+  dependencies:
+    "@cosmjs/cosmwasm-stargate" "^0.32.3"
+    "@cosmjs/ledger-amino" "^0.32.3"
+    "@cosmjs/proto-signing" "^0.32.3"
+    "@cosmjs/stargate" "^0.32.3"
+    "@ethersproject/hash" "^5.7.0"
+    "@iconify/vue" "^4.1.1"
+    "@leapwallet/cosmos-snap-provider" "^0.1.26"
+    "@ledgerhq/hw-transport-web-ble" "^6.28.5"
+    "@ledgerhq/hw-transport-webusb" "^6.28.5"
+    "@mdi/font" "^7.4.47"
+    "@tharsis/eip712" "^0.2.4"
+    "@tharsis/transactions" "^0.2.6"
+    cross-fetch "^4.0.0"
+    vue3-webcomponent-wrapper "^0.2.0"
+
 didyoumean@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/didyoumean/-/didyoumean-1.2.2.tgz"
@@ -2601,7 +2675,7 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild@^0.18.10:
+esbuild@*, esbuild@^0.18.10:
   version "0.18.20"
   resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.18.20.tgz"
   integrity sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA==
@@ -3562,6 +3636,13 @@ magic-string@^0.30.0:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.15"
 
+magic-string@^0.30.3:
+  version "0.30.9"
+  resolved "https://registry.npmjs.org/magic-string/-/magic-string-0.30.9.tgz"
+  integrity sha512-S1+hd+dIrC8EZqKyT9DstTH/0Z+f76kmmvZnkfQVmOpDEF9iVgdYif3Q/pIWHmCoo59bQVGW0kVL3e2nl+9+Sw==
+  dependencies:
+    "@jridgewell/sourcemap-codec" "^1.4.15"
+
 magic-string@^0.30.5:
   version "0.30.8"
   resolved "https://registry.npmjs.org/magic-string/-/magic-string-0.30.8.tgz"
@@ -4053,24 +4134,19 @@ pify@^3.0.0:
   version "0.3.4"
   resolved "file:../widget"
   dependencies:
-    "@buf/evmos_evmos.bufbuild_es" "^1.8.0-20240103203610-63f1ca861eeb.2"
-    "@bufbuild/protobuf" "^1.8.0"
     "@cosmjs/amino" "^0.32.3"
     "@cosmjs/cosmwasm-stargate" "^0.32.3"
-    "@cosmjs/encoding" "^0.32.0-rc.1"
     "@cosmjs/ledger-amino" "^0.32.3"
     "@cosmjs/proto-signing" "^0.32.3"
     "@cosmjs/stargate" "^0.32.3"
     "@ethersproject/hash" "5.7.0"
     "@ethersproject/signing-key" "5.7.0"
-    "@evmos/proto" "^0.2.1-rc6"
+    "@injectivelabs/sdk-ts" "^1.14.7"
     "@leapwallet/cosmos-snap-provider" "^0.1.21"
     "@ledgerhq/hw-transport-web-ble" "^6.27.13"
     "@ledgerhq/hw-transport-webusb" "^6.27.14"
     "@metamask/eth-sig-util" "^5.1.0"
     "@ping-pub/chain-registry-client" "^0.0.25"
-    "@tharsis/eip712" "^0.2.4"
-    "@tharsis/transactions" "^0.2.6"
     "@types/bignumber.js" "^5.0.0"
     buffer "6.0.3"
     cross-fetch "^3.1.5"
@@ -4079,9 +4155,9 @@ pify@^3.0.0:
     evmosjs "^0.3.3"
     fflate "^0.8.0"
     google-protobuf "^3.21.2"
-    install "^0.13.0"
-    npm "^10.5.0"
-    osmojs "^16.10.0"
+    osmojs "^15.2.1"
+    ping-widget "^0.0.33"
+    viem "^2.9.5"
     vue "^3.2.47"
     vue3-webcomponent-wrapper "^0.2.0"
 
@@ -5169,7 +5245,7 @@ typed-array-length@^1.0.6:
     is-typed-array "^1.1.13"
     possible-typed-array-names "^1.0.0"
 
-typescript@*, typescript@>=4.4.4, typescript@~4.9.5:
+typescript@*, typescript@>=4.4.4, typescript@>=4.7, typescript@~4.9.5:
   version "4.9.5"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
@@ -5399,7 +5475,7 @@ vue-demi@>=0.14.7:
   resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.7.tgz"
   integrity sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==
 
-vue-i18n@*, vue-i18n@^9.10.2:
+vue-i18n@*, vue-i18n@^9.0.0, vue-i18n@^9.10.2:
   version "9.10.2"
   resolved "https://registry.npmjs.org/vue-i18n/-/vue-i18n-9.10.2.tgz"
   integrity sha512-ECJ8RIFd+3c1d3m1pctQ6ywG5Yj8Efy1oYoAKQ9neRdkLbuKLVeW4gaY5HPkD/9ssf1pOnUrmIFjx2/gkGxmEw==
@@ -5444,7 +5520,7 @@ vue-tsc@^1.8.27:
     "@vue/language-core" "1.8.27"
     semver "^7.5.4"
 
-"vue@^2.6.14 || ^3.3.0", "vue@^2.7.0 || ^3.2.25", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.2, vue@^3.2.25, vue@^3.2.4, vue@^3.2.45, vue@^3.2.47, "vue@> 3.0.0", vue@>=3, vue@>=3.0.0, "vue@2 || 3", vue@3.4.21:
+"vue@^2.6.14 || ^3.3.0", "vue@^2.7.0 || ^3.2.25", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.2, vue@^3.2.25, vue@^3.2.4, vue@^3.2.45, vue@^3.2.47, vue@^3.3.0, "vue@> 3.0.0", vue@>=3, vue@>=3.0.0, "vue@2 || 3", vue@3.4.21:
   version "3.4.21"
   resolved "https://registry.npmjs.org/vue/-/vue-3.4.21.tgz"
   integrity sha512-5hjyV/jLEIKD/jYl4cavMcnzKwjMKohureP8ejn3hhEjwhWIhWeuzL2kJAjzl/WyVsgPY56Sy4Z40C3lVshxXA==
@@ -5475,6 +5551,11 @@ vue3-perfect-scrollbar@^1.6.1:
     cssnano "^5.1.14"
     perfect-scrollbar "^1.5.5"
     postcss-import "^12.0.0"
+
+vuetify@^3.5.13:
+  version "3.5.13"
+  resolved "https://registry.npmjs.org/vuetify/-/vuetify-3.5.13.tgz"
+  integrity sha512-3ZyIoHgB2GR87ojIpqNwkkRXlUNTEKh83fjUuQ1hOKdTXzEuZXBgtfUt9kp4WOVnYILGdZKWTJ6gv8nXOa/tZA==
 
 watchpack@^2.4.1:
   version "2.4.1"
