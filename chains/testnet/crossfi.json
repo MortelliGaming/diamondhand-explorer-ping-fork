@@ -12,7 +12,7 @@
     "addr_prefix": "mx",
     "logo": "/logos/crossfi.jpeg",
     "theme_color": "#812cd6",
-    "keplr_features": ["eth-address-gen", "eth-key-sign", "ibc-transfer", "ibc-go"],
+    "keplr_features": ["eth-address-gen", "eth-key-sign", "ibc-transfer", "ibc-go", "cosmwasm"],
     "has_evm_features": true,
     "assets": [{
         "base": "xfi",

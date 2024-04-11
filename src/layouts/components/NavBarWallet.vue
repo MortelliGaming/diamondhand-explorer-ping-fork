@@ -42,6 +42,7 @@ const tipMsg = computed(() => {
 
 <template>
   <dh-connect-wallet 
+    v-show="false"
     v-if="chainStore.current?.chainName" 
     :blockchain-config="((dashboard.localConfigs[chainStore.chainName] as any) as BlockchainConfigSimple)" />
 
