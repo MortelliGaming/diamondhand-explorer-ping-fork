@@ -12,20 +12,22 @@
     "sdk_version": "0.46.0",
     "coin_type": 118,
     "assets": [{
-        "base": "mpx",
-        "symbol": "MPX",
-        "exponent": "18",
-        "coingecko_id": "xfi_mpx", 
-        "logo": "/logos/xfi.jpeg",
-        "isStakingAsset": true
+      "base": "mpx",
+      "symbol": "MPX",
+      "exponent": "18",
+      "coingecko_id": "xfi_mpx", 
+      "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-MPX.png",
+      "isFeeAsset": true,
+      "isStakingAsset": true
     },{
       "base": "xfi",
       "symbol": "XFI",
       "exponent": "18",
-      "coingecko_id": "xfi_mpx", 
-      "logo": "/logos/xfi.jpeg",
-      "isStakingAsset": true
-  }],
+      "coingecko_id": "xfi", 
+      "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-XFI.png",
+      "isFeeAsset": true,
+      "isStakingAsset": false
+    }],
     "fees": {
       "fee_tokens": [
         {
@@ -38,5 +40,5 @@
       ]
     },
     "addr_prefix": "mx",
-    "logo": "https://mineplex.io/images/landing/iconMain.svg"
+    "logo": "https://crossfi.org/wp-content/uploads/2024/03/Icon-version-%E2%80%93-Color-CROSS-FINANCE.png"
   }

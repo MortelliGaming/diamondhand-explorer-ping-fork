@@ -10,24 +10,32 @@
     "coin_type": "60",
     "min_tx_fee": "800",
     "addr_prefix": "mx",
-    "logo": "/logos/crossfi.jpeg",
+    "logo": "https://crossfi.org/wp-content/uploads/2024/03/Icon-version-%E2%80%93-Color-CROSS-FINANCE.png",
     "theme_color": "#812cd6",
     "keplr_features": ["eth-address-gen", "eth-key-sign", "ibc-transfer", "ibc-go", "cosmwasm"],
     "has_evm_features": true,
     "assets": [{
-        "base": "xfi",
-        "symbol": "XFI",
-        "exponent": "18",
-        "coingecko_id": "xfi", 
-        "logo": "/logos/xfi.jpeg",
-        "isFeeAsset": true,
-        "isStakingAsset": false
-    },{
         "base": "mpx",
         "symbol": "MPX",
         "exponent": "18",
         "coingecko_id": "xfi_mpx", 
-        "logo": "/logos/xfi.jpeg",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-MPX.png",
+        "isFeeAsset": true,
+        "isStakingAsset": true
+    },{
+        "base": "xfi",
+        "symbol": "XFI",
+        "exponent": "18",
+        "coingecko_id": "xfi", 
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-XFI.png",
+        "isFeeAsset": true,
+        "isStakingAsset": false
+    },{
+        "base": "empx",
+        "symbol": "eMPX",
+        "exponent": "18",
+        "coingecko_id": "xfi_empx", 
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-eMPX.png",
         "isFeeAsset": true,
         "isStakingAsset": true
     },{
@@ -35,7 +43,23 @@
         "symbol": "XFT",
         "exponent": "18",
         "coingecko_id": "xft", 
-        "logo": "/logos/xfi.jpeg",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Icon-version-%E2%80%93-Main-Color-CROSSFI-FOUNDATION.png",
+        "isFeeAsset": false,
+        "isStakingAsset": false
+    },{
+        "base": "exe",
+        "symbol": "EXE",
+        "exponent": "18",
+        "coingecko_id": "xfi_exe", 
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-EXE.png",
+        "isFeeAsset": false,
+        "isStakingAsset": false
+    },{
+        "base": "xusd",
+        "symbol": "xUSD",
+        "exponent": "18",
+        "coingecko_id": "xfi_exe", 
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-XUSD.png",
         "isFeeAsset": false,
         "isStakingAsset": false
     }]

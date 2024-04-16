@@ -3,7 +3,7 @@
   "rest": "https://cosmos-api.xfi.ms/",
   "chainId": "mineplex-mainnet-1",
   "chainName": "MinePlex Mainnet",
-  "chainSymbolImageUrl": "https://mineplex.io/images/landing/iconMain.svg",
+  "chainSymbolImageUrl": "https://crossfi.org/wp-content/uploads/2024/03/Icon-version-%E2%80%93-Color-CROSS-FINANCE.png",
   "nodeProvider": {
     "name": "CrossFi Foundation",
     "website":"https://crossfi.org/",
