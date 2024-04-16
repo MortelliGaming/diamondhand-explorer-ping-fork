@@ -19,7 +19,7 @@
         "symbol": "MPX",
         "exponent": "18",
         "coingecko_id": "xfi_mpx", 
-        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-MPX.png",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-MPX.png",
         "isFeeAsset": true,
         "isStakingAsset": true
     },{
@@ -27,7 +27,7 @@
         "symbol": "XFI",
         "exponent": "18",
         "coingecko_id": "xfi", 
-        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-XFI.png",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-XFI.png",
         "isFeeAsset": true,
         "isStakingAsset": false
     },{
@@ -35,7 +35,7 @@
         "symbol": "eMPX",
         "exponent": "18",
         "coingecko_id": "xfi_empx", 
-        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-eMPX.png",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-eMPX.png",
         "isFeeAsset": true,
         "isStakingAsset": true
     },{
@@ -43,7 +43,7 @@
         "symbol": "XFT",
         "exponent": "18",
         "coingecko_id": "xft", 
-        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Icon-version-%E2%80%93-Main-Color-CROSSFI-FOUNDATION.png",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-XFT.png",
         "isFeeAsset": false,
         "isStakingAsset": false
     },{
@@ -51,7 +51,7 @@
         "symbol": "EXE",
         "exponent": "18",
         "coingecko_id": "xfi_exe", 
-        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-EXE.png",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-EXE.png",
         "isFeeAsset": false,
         "isStakingAsset": false
     },{
@@ -59,7 +59,7 @@
         "symbol": "xUSD",
         "exponent": "18",
         "coingecko_id": "xfi_exe", 
-        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-XUSD.png",
+        "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-XUSD.png",
         "isFeeAsset": false,
         "isStakingAsset": false
     }]

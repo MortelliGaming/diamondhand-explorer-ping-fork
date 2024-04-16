@@ -16,29 +16,18 @@
       "symbol": "MPX",
       "exponent": "18",
       "coingecko_id": "xfi_mpx", 
-      "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-MPX.png",
+      "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-MPX.png",
       "isFeeAsset": true,
       "isStakingAsset": true
-    },{
+  },{
       "base": "xfi",
       "symbol": "XFI",
       "exponent": "18",
       "coingecko_id": "xfi", 
-      "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Color-XFI.png",
+      "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-XFI.png",
       "isFeeAsset": true,
       "isStakingAsset": false
-    }],
-    "fees": {
-      "fee_tokens": [
-        {
-          "denom": "mpx",
-          "fixed_min_gas_price": 10000000000000,
-          "low_gas_price": 17500000000000,
-          "average_gas_price": 225400000000,
-          "high_gas_price": 254800000000
-        }
-      ]
-    },
+  }],
     "addr_prefix": "mx",
-    "logo": "https://crossfi.org/wp-content/uploads/2024/03/Icon-version-%E2%80%93-Color-CROSS-FINANCE.png"
+    "logo": "https://crossfi.org/wp-content/uploads/2024/03/Token-Icon-Stylization-round-bg-MPX.png"
   }
