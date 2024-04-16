@@ -806,6 +806,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@keplr-wallet/types@^0.12.80":
+  version "0.12.80"
+  resolved "https://registry.npmjs.org/@keplr-wallet/types/-/types-0.12.80.tgz"
+  integrity sha512-GRMyOioocq2LaLAoaGegCOqgjKq4uXOPQ9QwoLpx0ZpsbccSr2wKN8PhFs/B9fwuhiJu1aroX7hXC0jlsE8XLg==
+  dependencies:
+    long "^4.0.0"
+
 "@leapwallet/cosmos-snap-provider@^0.1.26":
   version "0.1.26"
   resolved "https://registry.npmjs.org/@leapwallet/cosmos-snap-provider/-/cosmos-snap-provider-0.1.26.tgz"

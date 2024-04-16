@@ -61,6 +61,17 @@ export interface ChainConfig {
   chainId: string;
   coinType: string;
   assets: Asset[];
+  fee: {
+    fee_tokens: [
+      {
+        denom: string,
+        fixed_min_gas_price: number,
+        low_gas_price: number,
+        average_gas_price: number,
+        high_gas_price: number
+      }
+    ]
+  }
   themeColor?: string;
   features?: string[]
   endpoints: {

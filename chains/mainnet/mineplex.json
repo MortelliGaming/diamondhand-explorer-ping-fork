@@ -1,0 +1,42 @@
+{
+    "chain_name": "Mineplex (Crossfi Mainnet)",
+    "chainId": "mineplex-mainnet-1",
+    "keplr_features": ["eth-address-gen", "eth-key-sign", "ibc-transfer", "ibc-go", "cosmwasm"],
+    "api":[
+      "https://api-mineplex.diamondhand.capital","https://cosmos-api.xfi.ms"
+    ],
+    "rpc":[
+      "https://rpc-mineplex.diamondhand.capital","https://tendermint-rpc.xfi.ms"
+    ],
+    "snapshot_provider": "",
+    "sdk_version": "0.46.0",
+    "coin_type": 118,
+    "assets": [{
+        "base": "mpx",
+        "symbol": "MPX",
+        "exponent": "18",
+        "coingecko_id": "xfi_mpx", 
+        "logo": "/logos/xfi.jpeg",
+        "isStakingAsset": true
+    },{
+      "base": "xfi",
+      "symbol": "XFI",
+      "exponent": "18",
+      "coingecko_id": "xfi_mpx", 
+      "logo": "/logos/xfi.jpeg",
+      "isStakingAsset": true
+  }],
+    "fees": {
+      "fee_tokens": [
+        {
+          "denom": "mpx",
+          "fixed_min_gas_price": 10000000000000,
+          "low_gas_price": 17500000000000,
+          "average_gas_price": 225400000000,
+          "high_gas_price": 254800000000
+        }
+      ]
+    },
+    "addr_prefix": "mx",
+    "logo": "https://mineplex.io/images/landing/iconMain.svg"
+  }

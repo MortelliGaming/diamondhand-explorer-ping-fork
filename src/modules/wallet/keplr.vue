@@ -74,10 +74,11 @@ async function initParamsForKeplr() {
 
 function suggest() {
     // @ts-ignore
-    if (window.keplr) {
+    if (window.keplr != undefined) {
         // @ts-ignore
         window.keplr.experimentalSuggestChain(JSON.parse(conf.value)).catch(e => {
             error.value = e
+            console.log(e)
         })
     }
 }

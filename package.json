@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@keplr-wallet/types": "^0.12.80",
     "@rollup/plugin-inject": "^5.0.5",
     "@types/marked": "^4.3.2",
     "@types/node": "^18.19.26",
